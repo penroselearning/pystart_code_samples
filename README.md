@@ -4,6 +4,6 @@ Contains all the Code Samples contained in the book PyStart
 
 ![alt text][Book]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2
+[logo]: https://tekrecipes.files.wordpress.com/2019/10/pystart.png "PyStart"
 
 > Author - Sunil Nair
