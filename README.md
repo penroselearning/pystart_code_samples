@@ -2,8 +2,7 @@
 
 Contains all the Code Samples contained in the book PyStart
 
-![alt text][Book]
+![PyStart]( https://tekrecipes.files.wordpress.com/2019/10/pystart.png "PyStart")
 
-[logo]: https://tekrecipes.files.wordpress.com/2019/10/pystart.png "PyStart"
 
 > Author - Sunil Nair
