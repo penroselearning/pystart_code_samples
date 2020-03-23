@@ -1,0 +1,83 @@
+
+print("Welcome to Penrose Bank")
+
+choice = int(input('''Select your Option
+1. Open an Account
+2. Login to Account:\n'''))
+
+# Checks the Option Chosen
+if choice == 1:
+    name = input("Enter your name\n")
+    pin = input("Enter your Password:\n")
+    starting_balance = int(input("Enter your Starting Balance\n"))
+    
+    # Save the Account
+    
+    with open('penrose_bank.txt','a') as file:
+        file.write(f"{name}:{pin}")
+        file.write("\n")
+        file.write(f"{starting_balance}")
+        file.write("\n")
+
+elif choice == 2:
+    
+    # Read from the File and Store into a List without New Line or Spaces
+    with open('penrose_bank.txt','r') as file:
+      accounts = file.read().splitlines()
+    
+
+    name = input("Enter your Account Name:\n")
+    pin = input("Enter your Password:\n")
+    
+    attempts = 2
+    
+    while f"{name}:{pin}" not in accounts and attempts > 0:
+        print(f"Invalid Account Login. {attempts} attempts remaning")
+        
+        name = input("Enter your Account Name:\n")
+        pin = input("Enter your Password:\n")
+        
+        attempts -= 1
+        exit()
+        
+    account_choice = int(input('''Select your Option
+1. Add Money
+2. Withdraw Money\n'''))
+
+    if account_choice == 1:
+        
+        # Deposit Money
+        deposit = int(input("Enter Money to Deposit:\n"))
+    
+        # Update the List with the Deposited Money
+        for x in range(len(accounts)):
+            if accounts[x] == f"{name}:{pin}":
+                accounts[x+1] = str(int(accounts[x+1]) + deposit)
+                break
+        
+        print(f"Your Account Balance is USD {accounts[x+1]}")
+        
+        # Write the List back into the File
+        with open('penrose_bank.txt','w') as file:
+            # Will help us write the List back into the file by including New Line
+            items = map(lambda x: x + '\n', accounts)
+            file.writelines(items)
+    
+    elif account_choice == 2:
+        
+        # Withdraw Money
+        withdraw = int(input("Enter Money to Withdraw:\n"))
+    
+        # Update the List with the Withdrawn Money
+        for x in range(len(accounts)):
+            if accounts[x] == f"{name}:{pin}":
+                accounts[x+1] = str(int(accounts[x+1]) - withdraw)
+                break
+        
+        print(f"Your Account Balance is USD {accounts[x+1]}")
+        
+        # Write the List back into the File
+        with open('penrose_bank.txt','w') as file:
+            # Will help us write the List back into the file by including New Line
+            items = map(lambda x: x + '\n', accounts)
+            file.writelines(items)
